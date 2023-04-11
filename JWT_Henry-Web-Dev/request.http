@@ -1,0 +1,9 @@
+GET http://localhost:6000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJIZW5yeSIsImlhdCI6MTY4MDMyMjQ2NiwiZXhwIjoxNjgwMzIyNDgxfQ.Xas92GN8IIO8MWq-AO07S69i_3xzTNmVKLH5TxxZJyM
+
+###
+POST http://localhost:6666/login
+Content-Type: application/json
+
+{"username": "Henry"}
+# req.body.username

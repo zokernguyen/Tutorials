@@ -1,0 +1,13 @@
+GET http://localhost:6969/books
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODAyNTQ3ODIsImV4cCI6MTY4MDI1ODM4Mn0.zVKfVDgs111ZzLoB1BTpwjLwFv_6WEdmWq7nw_9CLgY
+
+###
+
+POST http://localhost:9696/login
+
+# login info
+Content-Type: application/json
+{
+"username": "zoker",
+"password": "zoker123"
+}
