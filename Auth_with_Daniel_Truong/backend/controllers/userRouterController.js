@@ -6,10 +6,7 @@ const userRouterController = {
     getAllUsers: async (req, res) => {
         try {
             const allUsers = await User.find();
-            res.status(200).json({
-                message: "All users loaded success",
-                data: allUsers
-            });
+            res.status(200).json(allUsers);
         } catch (error) {
             res.status(500).json(error.message);
         }
@@ -31,7 +28,9 @@ const userRouterController = {
             });
 
         } catch (err) {
-            res.status(400).json(err.message)
+            res.status(400).json({
+                message: err.message
+            })
         }
     }
 }

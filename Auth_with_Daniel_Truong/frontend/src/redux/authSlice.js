@@ -3,15 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 const authSlice = createSlice({
     name: "auth",
     initialState: {
+
         login: {
-            currentUser: null,//return user info after login success
-            isFetching: false,//await for login progress
-            error: false//
-        }
+            currentUser: null,
+            isFetching: false,
+            error: false,
+        },
+
+        register: {
+            isFetching: false,
+            error: false,
+            success: false
+        },
     },
 
     reducers: {
-        //actions:
 
         loginStart: (state) => {
             state.login.isFetching = true;
@@ -19,21 +25,58 @@ const authSlice = createSlice({
 
         loginSuccess: (state, action) => {
             state.login.isFetching = false;
-            state.currentUser = action.payload;
-            state.error = false;
+            state.login.currentUser = action.payload;
+            state.login.error = false;
         },
 
         loginFailed: (state) => {
-            state.isFetching = false;
-            state.error = true
-        }
+            state.login.isFetching = false;
+            state.login.error = true;
+        },
+
+        registerStart: (state) => {
+            state.register.isFetching = true;
+        },
+
+        registerSuccess: (state,) => {
+            state.register.isFetching = false;
+            state.register.error = false;
+            state.register.success = true;
+        },
+
+        registerFailed: (state) => {
+            state.register.isFetching = false;
+            state.register.error = true;
+            state.register.success = false;
+        },
+
+        logoutStart: (state) => {
+            state.login.isFetching = true;
+        },
+
+        logoutSuccess: (state) => {
+            state.login.isFetching = false;
+            state.login.currentUser = null;
+            state.login.error = false;
+        },
+
+        logoutFailed: (state) => {
+            state.login.isFetching = false;
+            state.login.error = true;
+        },
     }
 });
 
 export const {
     loginStart,
     loginSuccess,
-    loginFailed
+    loginFailed,
+    registerStart,
+    registerSuccess,
+    registerFailed,
+    logoutStart,
+    logoutSuccess,
+    logoutFailed,
 } = authSlice.actions;
 
 export default authSlice.reducer;

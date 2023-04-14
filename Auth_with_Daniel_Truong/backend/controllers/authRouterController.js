@@ -107,16 +107,12 @@ const authRouterController = {
                     sameSite: "strict"
                 });
 
-                const { admin, password, ...others } = user._doc;
+                const { password, ...others } = user._doc;
                 //exclude sensitive data from the user document before sending it in the response.
                 //user._doc = only get stored value (user = including user template/model and other structural values/metadata)
 
-                res.status(200).json({
-                    message: "Login success",
-                    accessToken: accessToken,
-                    data: others,
-                    role: user.admin ? "Admin" : "Basic User"
-                });
+                res.status(200).json({ ...others, accessToken, refreshToken });
+                //do not expose password here
             };
         } catch (error) {
             res.status(500).json({

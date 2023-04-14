@@ -5,8 +5,15 @@ const authMDWController = {
     //MDW to verify accessToken
 
     verifyToken: (req, res, next) => {
-        const accessToken = req.header('authorization').replace("Bearer ", "");
 
+        const authHeader = req.header('Authorization');
+        if (!authHeader) {
+            return res.status(401).json({
+                error: "Missing authorization header",
+            });
+        }
+
+        const accessToken = authHeader.replace("Bearer ", "");
         if (!accessToken) {
             return res.status(401).json({ error: "Missing access token" });
         }
