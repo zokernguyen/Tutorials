@@ -109,7 +109,7 @@ const authRouterController = {
 
                 const { password, ...others } = user._doc;
                 //exclude sensitive data from the user document before sending it in the response.
-                //user._doc = only get stored value (user = including user template/model and other structural values/metadata)
+                //user._doc = only get stored value (user object includes User model and other structural values/metadata that is unneccessory to send to client)
 
                 res.status(200).json({ ...others, accessToken, refreshToken });
                 //do not expose password here
